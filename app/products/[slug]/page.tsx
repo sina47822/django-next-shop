@@ -17,7 +17,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ params }) => {
     <div className=' pt-16 px-6 bg-white'>
       <div className='w-[100%] lg:w-[80%] mx-auto'>
         <div className='max-w-[1500px] mt-4 grid grid-cols-1 md:grid-cols-5 gap-4'>
-          <div className='col-span-4 pr-6 pb-6'>
+          <div className='col-span-5 pr-6 pb-6'>
             <Image
               src='/images/products/shopping.webp'
               className='object-cover  rounded-xl'
@@ -67,7 +67,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ params }) => {
 
           </div>
           <div className='col-span-1'>
-            <ProductSidebar />
+            {/* <ProductSidebar /> */}
           </div>
         </div>
       </div>

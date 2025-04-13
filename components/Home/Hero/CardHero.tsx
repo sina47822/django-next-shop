@@ -19,7 +19,7 @@ const CardHero = ({id, url , label,src_img,underline} :Props) => {
           <div className="bg-white/90 dark:bg-gray-800/85 p-6 rounded-2xl shadow-xl flex flex-col text-center justify-center">
             <h3 className="text-lg font-semibold">{label}</h3>
             <p className="text-gray-600 dark:text-gray-400">{underline}</p>
-            <Image src={src_img} width={300} height={300} alt='{label}' />
+            <Image src={src_img} width={300} height={300} alt='{label}' className='hover:scale-110 object-cover transition-all' />
           </div>
         </Link>
     </div>

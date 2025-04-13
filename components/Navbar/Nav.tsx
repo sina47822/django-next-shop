@@ -1,4 +1,5 @@
 'use client';
+
 import { Navlinks } from '@/constant/constant'
 import { MenuIcon, PhoneCallIcon, Search, ShoppingCart, User2Icon } from 'lucide-react'
 import Link from 'next/link'
@@ -6,23 +7,18 @@ import React, { useEffect, useState } from 'react'
 import { FaInstagram, FaTelegram } from 'react-icons/fa';
 import { Separator } from "@/components/ui/separator"
 import { ModeToggle } from '../ui/ModeToggle';
+import UserNavClient from './UserNavClient';
 
-import useLoginModal from '../hooks/useLoginModal';
-import useSignUpModal from '../hooks/useSignUpModal copy';
 type Props = {
     openNav:() => void;
 };
 
-
-
 const Nav = ({openNav}:Props) => {
-    const loginModal = useLoginModal();
-    const signupModal = useSignUpModal();
 
-    const [isOpen, setIsOpen] = useState(false)
     const [navBg, setNavBg]=useState(false);
     const [marginTop, setMarginTop] =useState(false);
     const [textScroll, setTextScroll] =useState(false);
+    const [userId, setUserId] = useState<string | null>(null);
 
     useEffect(()=>{
         const handler = ()=> {
@@ -58,34 +54,8 @@ const Nav = ({openNav}:Props) => {
             <MenuIcon onClick={openNav} className={`cursor-pointer w-9 h-9 pl-3 text-white`}/>
           </div>
           <Separator orientation="vertical" className='py-3' />
-          <div>
-            <User2Icon onClick={()=>setIsOpen(!isOpen)} className={`relative cursor-pointer w-9 h-9 pr-3 text-white transition-all duration-200`}/>
-            
-            {isOpen && (
-              <div className='flex flex-col cursor-pointer bg-white text-black w-[220px] absolute top-[60px] border border-gray-800 rounded-xl shadow-md'>
-                <p 
-                  onClick={() => {
-                    console.log('Clicke Login')
-                    setIsOpen(false);
-                    loginModal.open();
-                  }}
-                  className='cursor-pointer text-xl hover:bg-gray-100 p-4 rounded-xl transition'
-                >
-                  ورود
-                </p>
-                <p
-                  className='cursor-pointer text-xl hover:bg-gray-100 p-4 rounded-xl transition'
-                  onClick={() => {
-                    setIsOpen(false);
-                    signupModal.open();
-                  }}
-                >
-                عضویت
-                </p>
-              </div>
-            )}
-            
-          </div>
+          <UserNavClient />
+          
         </div>
         <div className='items-center hidden'>
         {/* Navlink */}
